@@ -1,0 +1,127 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin" >
+
+    <EditText
+        android:id="@+id/et_server"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/server_http"
+        android:lines="1"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_4" />
+
+    <EditText
+        android:id="@+id/et_token"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/enter_token"
+        android:lines="1"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_4" />
+
+    <EditText
+        android:id="@+id/et_channel_id"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/enter_id"
+        android:lines="1"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_4" />
+
+    <EditText
+        android:id="@+id/et_plat_form"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:hint="平台标识"
+        android:lines="1"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_4"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_connect_device"
+        style="@style/common_bt"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/connect_server"
+        android:textSize="@dimen/Title_2" />
+    
+    
+       <Button
+        android:visibility="gone"
+        android:id="@+id/btn_bind_device"
+        style="@style/common_bt"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/bind"
+        android:textSize="@dimen/Title_2" />
+       
+       <Button
+        android:visibility="gone"
+        android:id="@+id/btn_unbind_device"
+        style="@style/common_bt"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:text="@string/unbind"
+        android:textSize="@dimen/Title_2" />
+
+    <EditText
+        android:id="@+id/et_deviceId"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/id_cipher"
+        android:lines="1"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_4" />
+
+    <EditText
+        android:id="@+id/et_version"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="12dp"
+        android:hint="@string/target_version"
+        android:lines="1"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_4" />
+
+    <Button
+        android:id="@+id/btn_upgrade_fireware"
+        style="@style/common_bt"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/fireware_update"
+        android:textSize="@dimen/Title_2" />
+
+</LinearLayout>

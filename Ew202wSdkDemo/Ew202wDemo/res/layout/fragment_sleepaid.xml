@@ -1,0 +1,439 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/music"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <include layout="@layout/divider_line" />
+
+            <TextView
+                android:id="@+id/tv_music_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/page_item_height"
+                android:background="@drawable/page_item_bg"
+                android:drawableRight="@drawable/ic_right"
+                android:gravity="center_vertical"
+                android:textColor="@color/COLOR_3"
+                android:textSize="@dimen/Title_4" />
+
+            <include layout="@layout/divider_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/volume"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/et_volume"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/et_bg"
+                    android:hint="0-16"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="2"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/COLOR_3"
+                    android:textSize="@dimen/Title_3" />
+
+                <Button
+                    android:id="@+id/btn_volume"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/send"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_music"
+                style="@style/common_bt"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/play"
+                android:textSize="@dimen/Title_2" />
+
+            <include layout="@layout/divider_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/color"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/r"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_r"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/execute_progress_win_bg"
+                        android:focusable="false"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_3" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/g"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_g"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/et_bg"
+                        android:hint="0-120"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_3" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/b"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_2" />
+
+                    <EditText
+                        android:id="@+id/et_b"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/execute_progress_win_bg"
+                        android:focusable="false"
+                        android:inputType="number"
+                        android:lines="1"
+                        android:maxLength="3"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/COLOR_3"
+                        android:textSize="@dimen/Title_3" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/w"
+                    android:textColor="@color/COLOR_3"
+                    android:textSize="@dimen/Title_2" />
+
+                <EditText
+                    android:id="@+id/et_w"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="7dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/execute_progress_win_bg"
+                    android:focusable="false"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="3"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/COLOR_3"
+                    android:textSize="@dimen/Title_3" />
+
+                <Button
+                    android:id="@+id/btn_w"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/send"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/luminance"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/et_brightness"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/et_bg"
+                    android:hint="@string/input_0_100"
+                    android:inputType="number"
+                    android:lines="1"
+                    android:maxLength="3"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/COLOR_3"
+                    android:textSize="@dimen/Title_3" />
+
+                <Button
+                    android:id="@+id/btn_brightness"
+                    style="@style/common_bt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="0dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:text="@string/send"
+                    android:textSize="@dimen/Title_2" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_close_light"
+                style="@style/common_bt"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/turn_off"
+                android:textSize="@dimen/Title_2" />
+
+            <include layout="@layout/divider_line" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/aroma"
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4"
+                android:visibility="gone" />
+
+            <RadioGroup
+                android:id="@+id/rg_aroma_speed"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
+                android:visibility="gone" >
+
+                <RadioButton
+                    android:id="@+id/rb_fast"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/control_tab_bg"
+                    android:button="@drawable/transparent"
+                    android:gravity="center"
+                    android:text="@string/fast"
+                    android:textColor="@drawable/control_tab_text_color"
+                    android:textSize="@dimen/Title_5" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/rb_mid"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/control_tab_bg"
+                    android:button="@drawable/transparent"
+                    android:gravity="center"
+                    android:text="@string/middle"
+                    android:textColor="@drawable/control_tab_text_color"
+                    android:textSize="@dimen/Title_5" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/rb_slow"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/control_tab_bg"
+                    android:button="@drawable/transparent"
+                    android:gravity="center"
+                    android:text="@string/slow"
+                    android:textColor="@drawable/control_tab_text_color"
+                    android:textSize="@dimen/Title_5" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/rb_close"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@drawable/control_tab_bg"
+                    android:button="@drawable/transparent"
+                    android:gravity="center"
+                    android:text="@string/close"
+                    android:textColor="@drawable/control_tab_text_color"
+                    android:textSize="@dimen/Title_5" />
+            </RadioGroup>
+
+            <include layout="@layout/divider_line" />
+
+            <RelativeLayout
+                android:id="@+id/layout_sleepaid_time"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/page_item_height"
+                android:background="@drawable/page_item_bg" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/ic_right"
+                    android:gravity="center_vertical"
+                    android:text="@string/time_out"
+                    android:textColor="@color/COLOR_3"
+                    android:textSize="@dimen/Title_4" />
+
+                <TextView
+                    android:id="@+id/tv_sleepaid_time_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/COLOR_4"
+                    android:textSize="@dimen/Title_4" />
+            </RelativeLayout>
+
+            <include layout="@layout/divider_line" />
+
+            <TextView
+                android:id="@+id/tv_tips_sleep_aid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text=""
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/common_bt"
+                android:layout_height="@dimen/btn_height"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/save"
+                android:textSize="@dimen/Title_2" />
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:id="@+id/mask"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_50"
+        android:clickable="true" />
+
+</FrameLayout>

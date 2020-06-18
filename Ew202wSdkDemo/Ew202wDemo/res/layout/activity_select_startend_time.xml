@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <RelativeLayout
+        android:id="@+id/layout_start_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"   
+        android:tag="checked" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:text="@string/start_time"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_2" />
+
+        <TextView
+            android:id="@+id/tv_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:textColor="@color/COLOR_4"
+            android:textSize="@dimen/Title_4" />
+    </RelativeLayout>
+
+    <View style="@style/page_divider" />
+
+    <RelativeLayout
+        android:id="@+id/layout_end_time"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:text="@string/end_time"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_2" />
+
+        <TextView
+            android:id="@+id/tv_end_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:textColor="@color/COLOR_4"
+            android:textSize="@dimen/Title_4" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_tips_set_sleep_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_margin"
+        android:layout_marginRight="@dimen/activity_margin"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:lineSpacingExtra="2dp"
+        android:textColor="@color/COLOR_4"
+        android:textSize="@dimen/Title_4" />
+
+    <RelativeLayout
+        android:id="@+id/body"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <com.sdkEw202w.demo.wheelview.WheelView
+                android:id="@+id/hour"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/transparent" />
+
+            <com.sdkEw202w.demo.wheelview.WheelView
+                android:id="@+id/minute"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/transparent" />
+
+            <com.sdkEw202w.demo.wheelview.WheelView
+                android:id="@+id/apm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:background="@drawable/transparent" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

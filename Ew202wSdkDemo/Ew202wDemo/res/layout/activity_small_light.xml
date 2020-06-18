@@ -1,0 +1,94 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin" >
+
+    <include layout="@layout/header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menu_item" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/nightLight"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_4" />
+
+        <CheckBox
+            android:id="@+id/cb_small_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:button="@drawable/cb_switch_bg"
+            android:focusable="false" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/ll_set_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <include layout="@layout/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_set_light"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/menu_item"
+            android:background="@drawable/page_item_bg"
+            android:drawableRight="@drawable/ic_right"
+            android:gravity="center_vertical"
+            android:text="@string/setLight"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_4" />
+
+        <include layout="@layout/divider_line" />
+    </LinearLayout>
+
+    <RelativeLayout     
+         android:visibility="gone"  
+        android:id="@+id/rl_time_setting"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/menu_item" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/setTime"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_4" />
+
+        <TextView
+            android:id="@+id/tv_light_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"      
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_6" />
+    </RelativeLayout>
+
+    <include layout="@layout/divider_line" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="@string/setnightLight"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_6" />
+
+</LinearLayout>

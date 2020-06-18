@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:id="@+id/rl_dialog"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@+id/rl_wv_container"
+        android:background="@drawable/bg_wheel_time_style">
+
+        <TextView
+            android:id="@+id/dialog_scene_sleephelper_phone_tv_operation_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/cancel"
+            android:textColor="@color/COLOR_4"
+            android:textSize="@dimen/Title_1" />
+
+        <TextView
+            android:id="@+id/dialog_scene_sleephelper_phone_tv_operation_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="@string/save"
+            android:textColor="@color/COLOR_2"
+            android:textSize="@dimen/Title_1" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/rl_wv_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/COLOR_5"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.sdkEw202w.demo.wheelview.WheelView
+            android:id="@+id/dialog_scene_sleephelper_phone_wv_time"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:dividerColor="@color/COLOR_4"
+            app:item_text_color="@color/COLOR_4"
+            app:item_text_size="16dp"
+            app:selected_text_color="@color/COLOR_3"    
+            app:selected_text_size="20dp" />
+    </LinearLayout>
+
+</RelativeLayout>

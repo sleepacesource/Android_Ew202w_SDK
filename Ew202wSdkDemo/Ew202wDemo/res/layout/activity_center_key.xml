@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical" >
+
+    <include layout="@layout/header" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_margin"
+        android:paddingRight="@dimen/activity_margin" >
+
+        <TextView
+            android:id="@+id/tv_music"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg"
+            android:gravity="center_vertical"
+            android:text="@string/sa_center_set_option1"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_4" />
+
+        <include layout="@layout/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_light"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg"
+            android:gravity="center_vertical"
+            android:text="@string/sa_center_set_option2"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_4" />
+
+        <include layout="@layout/divider_line" />
+
+        <TextView
+            android:id="@+id/tv_aroma"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/page_item_height"
+            android:background="@drawable/page_item_bg"
+            android:gravity="center_vertical"
+            android:text="@string/sa_center_set_option3"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_4" />
+
+        <include layout="@layout/divider_line" />
+    </LinearLayout>
+
+</LinearLayout>

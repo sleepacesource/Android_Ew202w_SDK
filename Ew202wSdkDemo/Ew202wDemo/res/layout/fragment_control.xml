@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:paddingLeft="@dimen/activity_margin"
+    android:paddingRight="@dimen/activity_margin"
+    android:background="@drawable/page_bg"
+    >
+
+    <RadioGroup
+        android:id="@+id/rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rb_light"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/control_tab_bg"
+            android:button="@drawable/transparent"
+            android:gravity="center"
+            android:text="@string/light"
+            android:textColor="@drawable/control_tab_text_color"
+            android:textSize="@dimen/Title_5" 
+            />
+
+        <RadioButton
+            android:visibility="gone"
+            android:id="@+id/rb_aroma"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/control_tab_bg"
+            android:button="@drawable/transparent"
+            android:gravity="center"
+            android:text="@string/aroma"
+            android:textColor="@drawable/control_tab_text_color"
+            android:textSize="@dimen/Title_5"  />
+
+        <RadioButton
+            android:id="@+id/rb_sleepaid"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/control_tab_bg"
+            android:button="@drawable/transparent"
+            android:gravity="center"
+            android:text="@string/sleep_aid"
+            android:textColor="@drawable/control_tab_text_color"
+            android:textSize="@dimen/Title_5"  />
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

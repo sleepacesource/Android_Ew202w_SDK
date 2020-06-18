@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical">
+
+  <include layout="@layout/header" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/clock_sleep"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_1" />
+
+          <CheckBox
+                android:id="@+id/clock_sleep_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:button="@drawable/cb_switch_bg" />
+    </RelativeLayout>
+
+    <View style="@style/page_divider" />
+
+
+    <LinearLayout
+        android:visibility="visible"
+        android:id="@+id/layout_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/layout_start_time"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/COLOR_8"
+            android:tag="checked">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_margin"
+              
+                android:text="@string/start_time"
+                android:textColor="@color/COLOR_3"
+                android:textSize="@dimen/Title_2" />
+
+            <TextView
+                android:id="@+id/tv_start_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/activity_margin"
+              
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+            <View style="@style/page_divider"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/layout_end_time"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/activity_margin"
+                
+                android:text="@string/end_time"
+                android:textColor="@color/COLOR_3"
+                android:textSize="@dimen/Title_2" />
+
+            <TextView
+                android:id="@+id/tv_end_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/activity_margin"
+                
+                android:textColor="@color/COLOR_4"
+                android:textSize="@dimen/Title_4" />
+            <View style="@style/page_divider"
+                android:layout_alignParentBottom="true"/>
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/tv_clock_sleep_tips"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="5dp"
+            android:gravity="left"
+            android:textColor="@color/COLOR_4"
+            android:textSize="@dimen/Title_4" />
+
+        <TextView
+            android:id="@+id/tv_tips_set_sleep_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_margin"
+            android:layout_marginRight="@dimen/activity_margin"
+            android:layout_marginTop="10dp"
+           
+            android:gravity="center_vertical"
+            android:lineSpacingExtra="2dp"
+            android:textColor="@color/COLOR_4"
+            android:textSize="@dimen/Title_4"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:orientation="horizontal">
+
+                <com.sdkEw202w.demo.wheelview.WheelView
+                    android:id="@+id/hour"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/transparent"
+                    app:bold_text="false"
+                    app:dividerColor="@color/COLOR_9"
+                    app:draw_center_bg="false"
+                    app:draw_shadow="false"
+                    app:item_text_color="@color/COLOR_4"
+                    app:item_text_size="24sp"
+                    app:selected_text_color="@color/COLOR_3"
+                    app:selected_text_size="30sp" />
+
+                <com.sdkEw202w.demo.wheelview.WheelView
+                    android:id="@+id/minute"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/transparent"
+                    app:bold_text="false"
+                    app:dividerColor="@color/COLOR_9"
+                    app:draw_center_bg="false"
+                    app:draw_shadow="false"
+                    app:item_text_color="@color/COLOR_4"
+                    app:item_text_size="24sp"
+                    app:selected_text_color="@color/COLOR_3"
+                    app:selected_text_size="30sp" />
+
+                <com.sdkEw202w.demo.wheelview.WheelView
+                    android:id="@+id/apm"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/transparent"
+                    app:bold_text="false"
+                    app:dividerColor="@color/COLOR_9"
+                    app:draw_center_bg="false"
+                    app:draw_shadow="false"
+                    app:item_text_color="@color/COLOR_4"
+                    app:item_text_size="24sp"
+                    app:selected_text_color="@color/COLOR_3"
+                    app:selected_text_size="24sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/page_bg"
+    android:orientation="vertical" >
+
+    <include
+        android:layout_width="wrap_content"
+        layout="@layout/header" />
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/device_pic_nox2_usetutorial_page2" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/WaveTitleStr"
+        android:textColor="@color/COLOR_3"
+        android:textSize="@dimen/Title_3" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" >
+
+        <RelativeLayout
+            android:id="@+id/gesture_control_rl_change_light_color"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/setting_item_height" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/ChangeLightColor"
+                android:textColor="@color/COLOR_3"
+                android:textSize="@dimen/Title_3" />
+
+            <ImageView
+                android:id="@+id/gesture_control_im_change_scene"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_check" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gesture_control_rl_change_music"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/ChangeMusic"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_3" />
+
+        <ImageView
+            android:id="@+id/gesture_control_im_change_music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_check"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gesture_control_rl_invalid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/setting_item_height"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/Disable"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_3" />
+
+        <ImageView
+            android:id="@+id/gesture_control_im_invalid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_check"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>
