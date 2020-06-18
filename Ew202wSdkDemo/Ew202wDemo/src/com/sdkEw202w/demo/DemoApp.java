@@ -50,7 +50,6 @@ public class DemoApp extends Application {
 		super.onCreate();
 		instance = this;
 		CrashHandler.getInstance().init(this);
-		SdkLog.setLogEnable(true);
 	}
 
 	@Override

@@ -56,8 +56,6 @@ public class ConfigWifiFragment extends BaseFragment {
 		super.onCreateView(inflater, container, savedInstanceState);
 		View root = inflater.inflate(R.layout.fragment_config_wifi, null);
 
-		SdkLog.setLogEnable(true);
-
 		// LogUtil.log(TAG+" onCreateView-----------");
 		findView(root);
 		initListener();
