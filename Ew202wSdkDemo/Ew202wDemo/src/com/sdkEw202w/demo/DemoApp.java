@@ -13,8 +13,8 @@ public class DemoApp extends Application {
 	public static final String SERVER_HOST = "http://172.14.0.111:8082";
 	public static final String THIED_PLATFORM = "13700";
 	public static final String CHNANEL_ID = "13700";
-	public static final int[][] ALARM_MUSIC = { { 31098, R.string.alarm_list_1 }, { 31099, R.string.alarm_list_2 },
-	        { 31100, R.string.dididi }, { 31101, R.string.music_box }, { 31102, R.string.alarm_list_9 }, { 31103, R.string.alarm_list_7 } };
+	public static final int[][] ALARM_MUSIC = { { 31143, R.string.alarm_list_1 }, { 31144, R.string.alarm_list_2 },
+	        { 31145, R.string.dididi }, { 31146, R.string.music_box }, { 31147, R.string.alarm_list_9 }, { 31148, R.string.alarm_list_7 } };
 	public static final String ip = "172.14.0.111";
 	public static final int port = 29010;
 	// public static final int[][] SLEEPAID_MUSIC = { { 30001,
@@ -24,11 +24,11 @@ public class DemoApp extends Application {
 	// { 30007, R.string.music_list_wind }, { 30008, R.string.music_list_summer
 	// } };
 
-	public static final int[][] SLEEPAID_MUSIC = { { 31086, R.string.music_list_You }, { 31087, R.string.music_list_Moon },
-	        { 31088, R.string.music_list_Here }, { 31089, R.string.music_list_Journey }, { 31090, R.string.music_list_World },
-	        { 31091, R.string.music_list_Baby }, { 31092, R.string.music_list_Lullaby }, { 31093, R.string.music_list_star },
-	        { 31094, R.string.music_list_sun }, { 31095, R.string.music_list_sea }, { 31096, R.string.music_list_rain },
-	        { 31097, R.string.music_list_dance } };
+	public static final int[][] SLEEPAID_MUSIC = { { 31131, R.string.music_list_You }, { 31132, R.string.music_list_Moon },
+	        { 31133, R.string.music_list_Here }, { 31134, R.string.music_list_Journey }, { 31135, R.string.music_list_World },
+	        { 31136, R.string.music_list_Baby }, { 31137, R.string.music_list_Lullaby }, { 31138, R.string.music_list_star },
+	        { 31139, R.string.music_list_sun }, { 31140, R.string.music_list_sea }, { 31141, R.string.music_list_rain },
+	        { 31142, R.string.music_list_dance } };
 	private static DemoApp instance;
 
 	private static long seqId = 0;
