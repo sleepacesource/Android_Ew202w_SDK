@@ -77,7 +77,7 @@ public class BaseActivity extends Activity implements OnClickListener {
 				        getString(R.string.device_w_ble_connect_failed_tip));
 				dialog.show();
 
-			}else if(cd.getStatus()==StatusCode.STATUS_CONFIG_MODE){
+			}else if(cd.getStatus() == 16){
 				Toast.makeText(this, getString(R.string.entered_light), Toast.LENGTH_SHORT).show();
 			} else {
 				Toast.makeText(this, getString(R.string.huoqu_failed), Toast.LENGTH_SHORT).show();

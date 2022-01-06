@@ -90,7 +90,7 @@ public abstract class BaseFragment extends Fragment implements OnClickListener{
     
 	public void showErrMsg(CallbackData cd){
 		if(isAdded()){
-			if(cd.getStatus()==StatusCode.STATUS_CONFIG_MODE){
+			if(cd.getStatus()==16){
 				Toast.makeText(mActivity, getString(R.string.entered_light), Toast.LENGTH_SHORT).show();
 			}else{
 				Toast.makeText(mActivity, getString(R.string.device_connect_fail), Toast.LENGTH_SHORT).show();
