@@ -14,6 +14,7 @@ import com.sleepace.sdk.interfs.IMonitorManager;
 import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CONNECTION_STATE;
 import com.sleepace.sdk.manager.CallbackData;
+import com.sleepace.sdk.manager.DeviceType;
 import com.sleepace.sdk.util.SdkLog;
 
 import android.os.Bundle;
@@ -148,6 +149,23 @@ public class LightFragment extends BaseFragment {
 		// etB.setText("98");
 		// etW.setText("182");
 		// etBrightness.setText("52");
+		
+		if(!TextUtils.isEmpty(MainActivity.deviceId)) {
+			mHelper.queryDeviceOnlineState(DeviceType.DEVICE_TYPE_EW202W.getType(), MainActivity.deviceId, new IResultCallback<Byte>() {
+				@Override
+				public void onResultCallback(CallbackData<Byte> cd) {
+					// TODO Auto-generated method stub
+					SdkLog.log(TAG+" queryDeviceOnlineState----------"+ cd);
+					if(cd.isSuccess()) {
+						if(cd.getResult() == 1) {//在线
+							
+						}else {//离线
+							
+						}
+					}
+				}
+			});
+		}
 	}
 
 	@Override

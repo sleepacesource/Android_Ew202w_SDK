@@ -1,22 +1,19 @@
 package com.sdkEw202w.demo;
 
-import com.sdkEw202w.demo.R;
 import com.sdkEw202w.demo.util.CrashHandler;
-import com.sleepace.sdk.util.SdkLog;
 
 import android.app.Application;
 
 public class DemoApp extends Application {
 
 	public static final String APP_TAG = "Ew202wSdk";
-	public static String TOKEN = "r8xfa7hdjcm6";
-	public static final String SERVER_HOST = "http://172.14.0.111:8082";
-	public static final String THIED_PLATFORM = "13700";
-	public static final String CHNANEL_ID = "13700";
+	public static String TOKEN = "test";
+	public static final String SERVER_HOST = "http://120.24.68.136:8090";
+	public static final String THIED_PLATFORM = "14200";
+	public static final String CHNANEL_ID = "14200";
+	
 	public static final int[][] ALARM_MUSIC = { { 31143, R.string.alarm_list_1 }, { 31144, R.string.alarm_list_2 },
 	        { 31145, R.string.dididi }, { 31146, R.string.music_box }, { 31147, R.string.alarm_list_9 }, { 31148, R.string.alarm_list_7 } };
-	public static final String ip = "172.14.0.111";
-	public static final int port = 29010;
 	// public static final int[][] SLEEPAID_MUSIC = { { 30001,
 	// R.string.music_list_sea }, { 30002, R.string.music_list_sun }, { 30003,
 	// R.string.music_list_dance }, { 30004, R.string.music_list_star },

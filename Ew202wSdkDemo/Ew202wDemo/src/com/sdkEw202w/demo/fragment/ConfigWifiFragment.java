@@ -149,8 +149,7 @@ public class ConfigWifiFragment extends BaseFragment {
 
 			loadingDialog.show();
 
-			mHelper.configWifi(device.getAddress(), ip, port, ssid, pwd, "2222", "10000", callback);
-
+			mHelper.configWifi(device.getAddress(), ip, port, ssid, pwd, callback);
 		}
 	}
 

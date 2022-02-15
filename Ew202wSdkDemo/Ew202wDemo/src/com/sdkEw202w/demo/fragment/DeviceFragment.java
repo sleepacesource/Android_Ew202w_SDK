@@ -1,20 +1,12 @@
 package com.sdkEw202w.demo.fragment;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.lang.reflect.Field;
+import java.util.List;
 
 import com.sdkEw202w.demo.DemoApp;
 import com.sdkEw202w.demo.MainActivity;
 import com.sdkEw202w.demo.R;
-import com.sdkEw202w.demo.SearchBleDeviceActivity;
-import com.sdkEw202w.demo.util.Utils;
-import com.sleepace.sdk.core.nox.domain.BleNoxDeviceInfo;
-import com.sleepace.sdk.core.nox.domain.SLPLight;
-import com.sleepace.sdk.core.nox.interfs.INoxManager;
-import com.sleepace.sdk.core.nox.interfs.ISleepAidManager;
+import com.sleepace.sdk.core.nox.domain.SLPTimeInfo;
 import com.sleepace.sdk.core.nox.util.Constants;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
 import com.sleepace.sdk.interfs.IDeviceManager;
@@ -22,31 +14,25 @@ import com.sleepace.sdk.interfs.IResultCallback;
 import com.sleepace.sdk.manager.CONNECTION_STATE;
 import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
-import com.sleepace.sdk.manager.ble.BleHelper;
 import com.sleepace.sdk.util.SdkLog;
+import com.sleepace.sdk.util.TimeUtil;
+import com.sleepace.sdk.wifidevice.bean.DeviceInfo;
 
-import android.app.Dialog;
 import android.app.Fragment;
-import android.app.ProgressDialog;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.util.TimeUnit;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class DeviceFragment extends BaseFragment {
@@ -120,7 +106,7 @@ public class DeviceFragment extends BaseFragment {
 		}
 
 		if (TextUtils.isEmpty(deviceId)) {
-			etDeviceId.setText("EW22W20C00044");
+			etDeviceId.setText("akclsxdsyi8m9");
 		} else {
 			etDeviceId.setText(deviceId);
 			MainActivity.deviceId = deviceId;
@@ -281,12 +267,10 @@ public class DeviceFragment extends BaseFragment {
 		if (v == btnConnectDevice) {
 			Object tag = v.getTag();
 			if (tag == null || "connect".equals(tag)) {
-
 				final String deviceId = etDeviceId.getText().toString();
 				final String tokenStr = etToken.getText().toString();
 				final String serverHost = etServer.getText().toString();
 				final String channelId = etChannelId.getText().toString();
-
 				if (TextUtils.isEmpty(serverHost) || TextUtils.isEmpty(tokenStr) || TextUtils.isEmpty(channelId)) {
 					Toast.makeText(mActivity, "params error", Toast.LENGTH_SHORT).show();
 					return;
@@ -297,36 +281,13 @@ public class DeviceFragment extends BaseFragment {
 				mSp.edit().putString(SP_DEVECI_ID, deviceId).commit();
 				mSp.edit().putString(SP_SERVER_HOST, serverHost).commit();
 				mSp.edit().putString(SP_TOKEN, tokenStr).commit();
-
-//				mHelper.authentication(tokenStr, channelId, serverHost, deviceId, new IResultCallback() {
-//
-//					@Override
-//					public void onResultCallback(final CallbackData cd) {
-//						// TODO Auto-generated method stub
-//						mActivity.runOnUiThread(new Runnable() {
-//							public void run() {
-//								SystemClock.sleep(2000);
-//								hideLoading();
-//								if (!cd.isSuccess()) {
-//									if (cd.getResult() != null) {
-//										Toast.makeText(mActivity, getString(R.string.device_connect_fail), Toast.LENGTH_SHORT).show();
-//									}
-//								} else {
-//									Toast.makeText(mActivity, getString(R.string.connection_succeeded), Toast.LENGTH_SHORT).show();
-//								}
-//							}
-//						});
-//
-//					}
-//				});
 				mHelper.authentication(tokenStr, channelId, serverHost,new IResultCallback() {
-
 					@Override
 					public void onResultCallback(final CallbackData cd) {
 						// TODO Auto-generated method stub
+						SdkLog.log(TAG+" authentication----------"+ cd);
 						mActivity.runOnUiThread(new Runnable() {
 							public void run() {
-								SystemClock.sleep(2000);
 								hideLoading();
 								if (!cd.isSuccess()) {
 									if (cd.getResult() != null) {
@@ -334,17 +295,49 @@ public class DeviceFragment extends BaseFragment {
 									}
 								} else {
 									Toast.makeText(mActivity, getString(R.string.connection_succeeded), Toast.LENGTH_SHORT).show();
+									mHelper.getDeviceList(new IResultCallback<List<DeviceInfo>>() {
+										@Override
+										public void onResultCallback(CallbackData<List<DeviceInfo>> cd) {
+											// TODO Auto-generated method stub
+											SdkLog.log(TAG+" getDeviceList----------"+ cd);
+											if(cd.isSuccess() && cd.getResult() != null && cd.getResult().size() > 0) {
+												for(DeviceInfo info : cd.getResult()) {
+													if(info.getDeviceType() == DeviceType.DEVICE_TYPE_EW202W.getType()) {
+														MainActivity.deviceId = info.getDeviceId();
+														etDeviceId.setText(info.getDeviceId());
+//														mHelper.queryDeviceOnlineState(DeviceType.DEVICE_TYPE_EW202W.getType(), info.getDeviceId(), new IResultCallback<Byte>() {
+//															@Override
+//															public void onResultCallback(CallbackData<Byte> cd) {
+//																// TODO Auto-generated method stub
+//																SdkLog.log(TAG+" queryDeviceOnlineState----------"+ cd);
+//															}
+//														});
+														
+//														SLPTimeInfo time = new SLPTimeInfo();
+//														time.setTimestamp((int) (System.currentTimeMillis()/1000));
+//														time.setTimezone(TimeUtil.getTimeZoneSecond());
+//														time.setTimeStyle((byte)12);
+//														mHelper.syncTime(deviceId, time, new IResultCallback() {
+//															@Override
+//															public void onResultCallback(CallbackData cd) {
+//																// TODO Auto-generated method stub
+//																SdkLog.log(TAG+" syncTime----1------"+ cd);
+//															}
+//														});
+														break;
+													}
+												}
+											}
+										}
+									});
 								}
 							}
 						});
-
 					}
 				});
-
 			} else {// 断开设备
 				getDeviceHelper().disconnect();
 			}
-
 		} else if (v == btnUpgrade) {
 			String version = etVersion.getText().toString();
 			

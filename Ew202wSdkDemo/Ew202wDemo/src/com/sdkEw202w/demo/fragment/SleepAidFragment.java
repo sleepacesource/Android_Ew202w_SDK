@@ -98,11 +98,9 @@ public class SleepAidFragment extends BaseFragment {
 					// TODO Auto-generated method stub
 					SdkLog.log(TAG, "---sleepAidConfigGet--：" + cd);
 					mActivity.runOnUiThread(new Runnable() {
-
 						@Override
 						public void run() {
 							// TODO Auto-generated method stub
-
 							if (cd.isSuccess()) {
 								aidInfo = cd.getResult();
 								if (aidInfo == null) {

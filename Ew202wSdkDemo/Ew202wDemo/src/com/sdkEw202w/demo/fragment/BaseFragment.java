@@ -1,12 +1,10 @@
 package com.sdkEw202w.demo.fragment;
 
-import com.sdkEw202w.demo.DemoApp;
+import com.sdkEw202w.demo.BaseActivity.MyOnTouchListener;
 import com.sdkEw202w.demo.MainActivity;
 import com.sdkEw202w.demo.R;
-import com.sdkEw202w.demo.BaseActivity.MyOnTouchListener;
 import com.sdkEw202w.demo.util.ActivityUtil;
 import com.sdkEw202w.demo.view.LoadingDialog;
-import com.sleepace.sdk.constant.StatusCode;
 import com.sleepace.sdk.ew202w.Ew202wHelper;
 import com.sleepace.sdk.manager.CallbackData;
 
