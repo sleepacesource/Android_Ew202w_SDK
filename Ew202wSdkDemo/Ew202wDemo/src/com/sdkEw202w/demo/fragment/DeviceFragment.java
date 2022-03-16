@@ -259,6 +259,46 @@ public class DeviceFragment extends BaseFragment {
 		super.onDestroyView();
 		getDeviceHelper().removeConnectionStateCallback(stateCallback);
 	}
+	
+	private IResultCallback getDeviceListCallback = new IResultCallback<List<DeviceInfo>>() {
+		@Override
+		public void onResultCallback(final CallbackData<List<DeviceInfo>> cd) {
+			// TODO Auto-generated method stub
+			SdkLog.log(TAG+" getDeviceList----------"+ cd);
+			mActivity.runOnUiThread(new Runnable() {
+				public void run() {
+					if (cd.isSuccess() && cd.getResult() != null && cd.getResult().size() > 0) {
+						for(DeviceInfo info : cd.getResult()) {
+							if(info.getDeviceType() == DeviceType.DEVICE_TYPE_EW202W.getType()) {
+								MainActivity.deviceId = info.getDeviceId();
+								etDeviceId.setText(info.getDeviceId());
+//								mHelper.queryDeviceOnlineState(DeviceType.DEVICE_TYPE_EW202W.getType(), info.getDeviceId(), new IResultCallback<Byte>() {
+//									@Override
+//									public void onResultCallback(CallbackData<Byte> cd) {
+//										// TODO Auto-generated method stub
+//										SdkLog.log(TAG+" queryDeviceOnlineState----------"+ cd);
+//									}
+//								});
+								
+//								SLPTimeInfo time = new SLPTimeInfo();
+//								time.setTimestamp((int) (System.currentTimeMillis()/1000));
+//								time.setTimezone(TimeUtil.getTimeZoneSecond());
+//								time.setTimeStyle((byte)12);
+//								mHelper.syncTime(deviceId, time, new IResultCallback() {
+//									@Override
+//									public void onResultCallback(CallbackData cd) {
+//										// TODO Auto-generated method stub
+//										SdkLog.log(TAG+" syncTime----1------"+ cd);
+//									}
+//								});
+								break;
+							}
+						}
+					}
+				}
+			});
+		}
+	};
 
 	@Override
 	public void onClick(View v) {
@@ -295,41 +335,7 @@ public class DeviceFragment extends BaseFragment {
 									}
 								} else {
 									Toast.makeText(mActivity, getString(R.string.connection_succeeded), Toast.LENGTH_SHORT).show();
-									mHelper.getDeviceList(new IResultCallback<List<DeviceInfo>>() {
-										@Override
-										public void onResultCallback(CallbackData<List<DeviceInfo>> cd) {
-											// TODO Auto-generated method stub
-											SdkLog.log(TAG+" getDeviceList----------"+ cd);
-											if(cd.isSuccess() && cd.getResult() != null && cd.getResult().size() > 0) {
-												for(DeviceInfo info : cd.getResult()) {
-													if(info.getDeviceType() == DeviceType.DEVICE_TYPE_EW202W.getType()) {
-														MainActivity.deviceId = info.getDeviceId();
-														etDeviceId.setText(info.getDeviceId());
-//														mHelper.queryDeviceOnlineState(DeviceType.DEVICE_TYPE_EW202W.getType(), info.getDeviceId(), new IResultCallback<Byte>() {
-//															@Override
-//															public void onResultCallback(CallbackData<Byte> cd) {
-//																// TODO Auto-generated method stub
-//																SdkLog.log(TAG+" queryDeviceOnlineState----------"+ cd);
-//															}
-//														});
-														
-//														SLPTimeInfo time = new SLPTimeInfo();
-//														time.setTimestamp((int) (System.currentTimeMillis()/1000));
-//														time.setTimezone(TimeUtil.getTimeZoneSecond());
-//														time.setTimeStyle((byte)12);
-//														mHelper.syncTime(deviceId, time, new IResultCallback() {
-//															@Override
-//															public void onResultCallback(CallbackData cd) {
-//																// TODO Auto-generated method stub
-//																SdkLog.log(TAG+" syncTime----1------"+ cd);
-//															}
-//														});
-														break;
-													}
-												}
-											}
-										}
-									});
+									mHelper.getDeviceList(getDeviceListCallback);
 								}
 							}
 						});
