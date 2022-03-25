@@ -225,9 +225,8 @@ public class SettingFragment extends BaseFragment {
 		public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 			// TODO Auto-generated method stub
 			if (buttonView == cbSynTime) {
-				
 //	            Object tag = buttonView.getTag();
-//	            SdkLog.log(TAG + " onCheckedChanged tag:" + tag + ",isChecked:" + isChecked );
+	            SdkLog.log(TAG + " onCheckedChanged isChecked:" + isChecked );
 //	            if (tag == null) {//说明不需要回调
 //	                buttonView.setTag(TAG);
 //	                return;
@@ -235,18 +234,15 @@ public class SettingFragment extends BaseFragment {
 				bleNoxWorkStatus.setClockSynSwitch(isChecked ? (byte) 1 : 0);
 				byte vaue = isChecked ? (byte) 1 : 0;
 				mHelper.synTimeSwitch(MainActivity.deviceId, vaue, new IResultCallback() {
-
 					@Override
 					public void onResultCallback(final CallbackData cd) {
 						// TODO Auto-generated method stub
 						mActivity.runOnUiThread(new Runnable() {
-
 							@Override
 							public void run() {
 
 							}
 						});
-
 					}
 				});
 			}

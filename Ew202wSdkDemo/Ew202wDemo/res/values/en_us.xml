@@ -180,6 +180,7 @@
 	<string name="bind_failed">Failed！</string>
 	<string name="bind">Connect</string>
   	<string name="unbind">Unbind</string>
+  	<string name="sync_time">Set Time</string>
     <string-array name="arr_week">
         <item>@string/mon</item>
         <item>@string/tue</item>

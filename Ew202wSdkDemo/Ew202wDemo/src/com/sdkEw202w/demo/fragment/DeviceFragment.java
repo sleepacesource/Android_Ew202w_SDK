@@ -1,6 +1,7 @@
 package com.sdkEw202w.demo.fragment;
 
 import java.lang.reflect.Field;
+import java.util.Date;
 import java.util.List;
 
 import com.sdkEw202w.demo.DemoApp;
@@ -21,6 +22,7 @@ import com.sleepace.sdk.wifidevice.bean.DeviceInfo;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.icu.text.SimpleDateFormat;
 import android.icu.util.TimeUnit;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +38,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class DeviceFragment extends BaseFragment {
-	private Button btnConnectDevice, btnUpgrade,btnBindDevice,btnUnbindDevice;
+	private Button btnConnectDevice, btnUpgrade,btnBindDevice,btnUnbindDevice,btnSyncTime;
 	private boolean upgrading = false;
 	private EditText etDeviceId, etToken, etServer, etVersion, etChannelId, etPlatForm;
 	private SharedPreferences mSp;
@@ -45,6 +47,8 @@ public class DeviceFragment extends BaseFragment {
 	private String SP_SERVER_HOST = "sp_server_host";
 	private String SP_DEVECI_ID = "sp_device_id";
 	Handler handler = new Handler();
+	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
@@ -73,6 +77,7 @@ public class DeviceFragment extends BaseFragment {
 		etVersion.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 		btnBindDevice = (Button) root.findViewById(R.id.btn_bind_device);
 		btnUnbindDevice = (Button) root.findViewById(R.id.btn_unbind_device);
+		btnSyncTime = (Button) root.findViewById(R.id.btn_sync_time);
 		btnBindDevice.setVisibility(View.VISIBLE);
 		btnUnbindDevice.setVisibility(View.VISIBLE);
 	}
@@ -107,6 +112,7 @@ public class DeviceFragment extends BaseFragment {
 
 		if (TextUtils.isEmpty(deviceId)) {
 			etDeviceId.setText("akclsxdsyi8m9");
+//			etDeviceId.setText("ncew4y78xcg21");
 		} else {
 			etDeviceId.setText(deviceId);
 			MainActivity.deviceId = deviceId;
@@ -129,6 +135,7 @@ public class DeviceFragment extends BaseFragment {
 		etVersion.addTextChangedListener(versionWatcher);
 		btnUnbindDevice.setOnClickListener(this);
 		btnBindDevice.setOnClickListener(this);
+		btnSyncTime.setOnClickListener(this);
 	}
 
 	protected void initUI() {
@@ -299,12 +306,29 @@ public class DeviceFragment extends BaseFragment {
 			});
 		}
 	};
+	
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		super.onClick(v);
-		if (v == btnConnectDevice) {
+		if(v == btnSyncTime) {
+			final int t = (int) ((System.currentTimeMillis()/1000) - 3600);
+			if(!TextUtils.isEmpty(MainActivity.deviceId)) {
+				SLPTimeInfo time = new SLPTimeInfo();
+				time.setTimestamp(t);
+				time.setTimezone(TimeUtil.getTimeZoneSecond());
+				time.setTimeStyle((byte)24);
+				mHelper.syncTime(MainActivity.deviceId, time, new IResultCallback() {
+					@Override
+					public void onResultCallback(CallbackData cd) {
+						// TODO Auto-generated method stub
+						SdkLog.log(TAG+" syncTime----" + t + "---" + dateFormat.format(new Date(t*1000l)) + "---"+cd);
+					}
+				});
+			}
+		}else if (v == btnConnectDevice) {
 			Object tag = v.getTag();
 			if (tag == null || "connect".equals(tag)) {
 				final String deviceId = etDeviceId.getText().toString();

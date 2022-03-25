@@ -201,6 +201,7 @@
 	<string name="bind_fail">绑定失败</string>
 	<string name="bind">绑定设备</string>
   	<string name="unbind">解绑设备</string>
+  	<string name="sync_time">设置时间</string>
     <string-array name="arr_week">
         <item>@string/mon</item>
         <item>@string/tue</item>
