@@ -1,16 +1,17 @@
 package com.sdkEw202w.demo;
 
 import com.sdkEw202w.demo.util.CrashHandler;
+import com.sleepace.sdk.util.SdkLog;
 
 import android.app.Application;
 
 public class DemoApp extends Application {
 
 	public static final String APP_TAG = "Ew202wSdk";
-	public static String TOKEN = "test";
+	public static String TOKEN = "test01";
 	public static final String SERVER_HOST = "http://120.24.68.136:8091";
-	public static final String THIED_PLATFORM = "10000";
-	public static final String CHNANEL_ID = "10000";
+	public static final String THIED_PLATFORM = "53500";
+	public static final String CHNANEL_ID = "53500";
 	
 	public static final int[][] ALARM_MUSIC = { { 31143, R.string.alarm_list_1 }, { 31144, R.string.alarm_list_2 },
 	        { 31145, R.string.dididi }, { 31146, R.string.music_box }, { 31147, R.string.alarm_list_9 }, { 31148, R.string.alarm_list_7 } };
@@ -46,6 +47,8 @@ public class DemoApp extends Application {
 	public void onCreate() {
 		super.onCreate();
 		instance = this;
+		SdkLog.setLogEnable(true);
+		SdkLog.setSaveLog(true, "log.txt");
 		CrashHandler.getInstance().init(this);
 	}
 

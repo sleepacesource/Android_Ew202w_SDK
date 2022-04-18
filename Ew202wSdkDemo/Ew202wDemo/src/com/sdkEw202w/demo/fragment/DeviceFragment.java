@@ -2,6 +2,7 @@ package com.sdkEw202w.demo.fragment;
 
 import java.lang.reflect.Field;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import com.sdkEw202w.demo.DemoApp;
@@ -17,6 +18,7 @@ import com.sleepace.sdk.manager.CallbackData;
 import com.sleepace.sdk.manager.DeviceType;
 import com.sleepace.sdk.util.SdkLog;
 import com.sleepace.sdk.util.TimeUtil;
+import com.sleepace.sdk.wifidevice.WiFiDeviceSdkHelper;
 import com.sleepace.sdk.wifidevice.bean.DeviceInfo;
 
 import android.app.Fragment;
@@ -47,11 +49,12 @@ public class DeviceFragment extends BaseFragment {
 	private String SP_SERVER_HOST = "sp_server_host";
 	private String SP_DEVECI_ID = "sp_device_id";
 	Handler handler = new Handler();
-	
+	private WiFiDeviceSdkHelper wifiDeviceSdkHelper;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		super.onCreateView(inflater, container, savedInstanceState);
+		wifiDeviceSdkHelper = WiFiDeviceSdkHelper.getInstance(mActivity.getApplicationContext());
 		View root = inflater.inflate(R.layout.fragment_device, null);
 		// LogUtil.log(TAG+" onCreateView-----------");
 		findView(root);
@@ -111,8 +114,8 @@ public class DeviceFragment extends BaseFragment {
 		}
 
 		if (TextUtils.isEmpty(deviceId)) {
+//			etDeviceId.setText("7klkgdpedxyfx");
 			etDeviceId.setText("akclsxdsyi8m9");
-//			etDeviceId.setText("ncew4y78xcg21");
 		} else {
 			etDeviceId.setText(deviceId);
 			MainActivity.deviceId = deviceId;
@@ -178,6 +181,19 @@ public class DeviceFragment extends BaseFragment {
 		SdkLog.log(TAG, "--setPageEnable--："+enable);
 		btnBindDevice.setEnabled(enable);
 		btnUnbindDevice.setEnabled(enable);
+	}
+	
+	private void getFirmwareInfo() {
+		HashMap<String, Object> args = new HashMap<String, Object>();
+		args.put("channelId", DemoApp.CHNANEL_ID);
+		args.put("lan", "zh-cn");
+		wifiDeviceSdkHelper.getlastFirmwareVersion(args, new IResultCallback<Void>() {
+			@Override
+			public void onResultCallback(CallbackData<Void> cd) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 
 	private TextWatcher versionWatcher = new TextWatcher() {
@@ -302,6 +318,8 @@ public class DeviceFragment extends BaseFragment {
 							}
 						}
 					}
+					
+					getFirmwareInfo();
 				}
 			});
 		}
@@ -339,6 +357,8 @@ public class DeviceFragment extends BaseFragment {
 					Toast.makeText(mActivity, "params error", Toast.LENGTH_SHORT).show();
 					return;
 				}
+				
+				WiFiDeviceSdkHelper.initServerHost(serverHost);
 				showLoading();
 				MainActivity.deviceId=deviceId;
 				mSp.edit().putString(SP_CHANNEL_ID, channelId).commit();
@@ -370,10 +390,10 @@ public class DeviceFragment extends BaseFragment {
 			}
 		} else if (v == btnUpgrade) {
 			String version = etVersion.getText().toString();
-			
 			if (TextUtils.isEmpty(version)) {
 				return;
 			}
+			SdkLog.log("upgrade version:" + version);
 			// showLoading();
 			mActivity.showUpgradeDialog();
 			handler.postDelayed(new Runnable() {
@@ -387,8 +407,8 @@ public class DeviceFragment extends BaseFragment {
 			}, 25000);
 			version=version.replace(".", "");
 			short deviceVersion=Short.valueOf(version);
-			SdkLog.log(TAG, "固件升级：" + MainActivity.deviceId + "==deviceVersion==:" + deviceVersion);
-			mHelper.deviceUpgrade(MainActivity.deviceId, deviceVersion, DeviceType.DEVICE_TYPE_EW202W.getType(), 2,
+			SdkLog.log("upgrade deviceVersion:" + deviceVersion+",deviceId:" + MainActivity.deviceId);
+			mHelper.deviceUpgrade(MainActivity.deviceId, deviceVersion, DeviceType.DEVICE_TYPE_EW202W.getType(), 3,
 			        new IResultCallback<Integer>() {
 				        @Override
 				        public void onResultCallback(final CallbackData cd) {
