@@ -438,7 +438,7 @@ public class SleepAidFragment extends BaseFragment {
 			light.setB(b);
 			light.setW(w);
 			aidInfo.setLight(light);
-			aidInfo.setLightOpenFlag((byte) 1);
+//			aidInfo.setLightOpenFlag((byte) 1);
 			aidInfo.setBrightness(brightness);
 			sleepAidConfigSet(aidInfo);
 
@@ -478,12 +478,10 @@ public class SleepAidFragment extends BaseFragment {
 			light.setB(b);
 			light.setW(w);
 			aidInfo.setLight(light);
-			aidInfo.setLightOpenFlag((byte) 1);
+//			aidInfo.setLightOpenFlag((byte) 1);
 			aidInfo.setBrightness(brightness);
 			sleepAidConfigSet(aidInfo);
-
 		} else if (v == btnCloseLight) {
-
 			aidInfo.setLightOpenFlag((byte) 0);
 			sleepAidConfigSet(aidInfo);
 		} else if (v == btnSave) {
@@ -531,12 +529,13 @@ public class SleepAidFragment extends BaseFragment {
 			light.setB(b);
 			light.setW(w);
 
+			aidInfo.setMusicOpenFlag((byte) (volume > 0 ? 1 : 0));
+			aidInfo.setLightOpenFlag((byte) (brightness > 0 ? 1: 0));
 			aidInfo.setLight(light);
 			aidInfo.setBrightness(brightness);
 
 			LogUtil.log(TAG + " sleepAidConfig:" + aidInfo);
 			sleepAidConfigSet(aidInfo);
-
 		}
 
 		else if (v == btnSendVolume) {
@@ -552,11 +551,9 @@ public class SleepAidFragment extends BaseFragment {
 		}
 
 		else if (v == btnPlayMusic) {
-
 			if (!playing) {
 				playMusic();
 			} else {
-
 				aidInfo.setMusicOpenFlag((byte) 0);
 				getDeviceHelper().sleepAidConfig(MainActivity.deviceId, aidInfo, 3000, new IResultCallback() {
 					@Override
@@ -585,8 +582,7 @@ public class SleepAidFragment extends BaseFragment {
 		}
 	}
 
-	private void sleepAidConfigSet(BleNoxAidInfo aidInfo) {
-
+	private void sleepAidConfigSet(final BleNoxAidInfo aidInfo) {
 		mActivity.hideLoading();
 		getDeviceHelper().sleepAidConfig(MainActivity.deviceId, aidInfo, 3000, new IResultCallback() {
 			@Override
@@ -603,6 +599,8 @@ public class SleepAidFragment extends BaseFragment {
 						mActivity.hideLoading();
 						if (cd.isSuccess()) {
 							Toast.makeText(mActivity, R.string.save_succeed, Toast.LENGTH_SHORT).show();
+							playing = aidInfo.getMusicOpenFlag() == 1;
+							initMusicButtonStatus();
 						} else {
 							mActivity.showErrTips(cd);
 						}

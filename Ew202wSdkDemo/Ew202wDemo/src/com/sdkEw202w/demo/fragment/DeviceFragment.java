@@ -115,7 +115,7 @@ public class DeviceFragment extends BaseFragment {
 
 		if (TextUtils.isEmpty(deviceId)) {
 //			etDeviceId.setText("7klkgdpedxyfx");
-			etDeviceId.setText("akclsxdsyi8m9");
+			etDeviceId.setText("a9p3w87sr4on7");
 		} else {
 			etDeviceId.setText(deviceId);
 			MainActivity.deviceId = deviceId;
