@@ -8,6 +8,7 @@ import java.util.List;
 import com.sdkEw202w.demo.DemoApp;
 import com.sdkEw202w.demo.MainActivity;
 import com.sdkEw202w.demo.R;
+import com.sleepace.sdk.constant.StatusCode;
 import com.sleepace.sdk.core.nox.domain.SLPTimeInfo;
 import com.sleepace.sdk.core.nox.util.Constants;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
@@ -453,9 +454,7 @@ public class DeviceFragment extends BaseFragment {
 			}
 			
 			mSp.edit().putString(SP_DEVECI_ID, deviceId).commit();
-			
 			mHelper.bindDevice(deviceId, new IResultCallback() {
-
 				@Override
                 public void onResultCallback(final CallbackData cd) {
 	                // TODO Auto-generated method stub
@@ -468,7 +467,11 @@ public class DeviceFragment extends BaseFragment {
 							if(cd.isSuccess()){
 						        Toast.makeText(mActivity, getString(R.string.bind_account_success), Toast.LENGTH_SHORT).show();
 							}else{
-						        Toast.makeText(mActivity, getString(R.string.bind_fail), Toast.LENGTH_SHORT).show();
+								if(cd.getStatus() == StatusCode.CERTIFICATION_EXPIRED) {
+									
+								}else {
+									Toast.makeText(mActivity, getString(R.string.bind_fail), Toast.LENGTH_SHORT).show();
+								}
 							}
 						}
 					});
