@@ -12,6 +12,7 @@ import com.sdkEw202w.demo.util.Utils;
 import com.sdkEw202w.demo.view.SelectValueDialog;
 import com.sdkEw202w.demo.view.SelectValueDialog.ValueSelectedListener;
 import com.sleepace.sdk.core.nox.domain.BleNoxAidInfo;
+import com.sleepace.sdk.core.nox.domain.BleNoxWorkStatus;
 import com.sleepace.sdk.core.nox.domain.SLPLight;
 import com.sleepace.sdk.core.nox.interfs.INoxManager;
 import com.sleepace.sdk.core.nox.interfs.ISleepAidManager;
@@ -26,6 +27,7 @@ import com.sleepace.sdk.util.SdkLog;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.WorkSource;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -48,7 +50,7 @@ public class SleepAidFragment extends BaseFragment {
 
 	private SelectValueDialog valueDialog;
 
-	private BleNoxAidInfo aidInfo;
+	private BleNoxAidInfo aidInfo = new BleNoxAidInfo();
 	private MusicInfo music = new MusicInfo();
 	private byte colorCode;
 	private boolean playing;
@@ -91,8 +93,7 @@ public class SleepAidFragment extends BaseFragment {
 		SdkLog.log(TAG, "---getDeviceHelper().isConnected()--：" + getDeviceHelper().isConnected()+"---MainActivity.deviceId---:"+MainActivity.deviceId);
 		if (getDeviceHelper().isConnected()) {
 			// 助眠获取
-			mHelper.sleepAidConfigGet(MainActivity.deviceId, 300, new IResultCallback<BleNoxAidInfo>() {
-
+			mHelper.sleepAidConfigGet(MainActivity.deviceId, 3000, new IResultCallback<BleNoxAidInfo>() {
 				@Override
 				public void onResultCallback(final CallbackData<BleNoxAidInfo> cd) {
 					// TODO Auto-generated method stub
@@ -102,19 +103,24 @@ public class SleepAidFragment extends BaseFragment {
 						public void run() {
 							// TODO Auto-generated method stub
 							if (cd.isSuccess()) {
-								aidInfo = cd.getResult();
-								if (aidInfo == null) {
-									aidInfo = new BleNoxAidInfo();
+								if (cd.getResult() != null) {
+									aidInfo = cd.getResult();
 								}
 								initAidInfo(aidInfo);
 							} else {
 								showErrMsg(cd);
-								
 							}
-
 						}
 					});
-
+					
+					getDeviceHelper().getWorkStatus(MainActivity.deviceId, 3000, new IResultCallback<BleNoxWorkStatus>() {
+						@Override
+						public void onResultCallback(CallbackData<BleNoxWorkStatus> cd) {
+							// TODO Auto-generated method stub
+							SdkLog.log(TAG, "---getWorkStatus--：" + cd);
+						}
+						
+					});
 				}
 			});
 		}
@@ -539,7 +545,6 @@ public class SleepAidFragment extends BaseFragment {
 		}
 
 		else if (v == btnSendVolume) {
-
 			if (Utils.inputTips(etVolume, 16)) {
 				return;
 			}
