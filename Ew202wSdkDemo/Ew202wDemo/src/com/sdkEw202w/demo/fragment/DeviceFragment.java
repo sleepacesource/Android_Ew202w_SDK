@@ -9,6 +9,7 @@ import com.sdkEw202w.demo.DemoApp;
 import com.sdkEw202w.demo.MainActivity;
 import com.sdkEw202w.demo.R;
 import com.sleepace.sdk.constant.StatusCode;
+import com.sleepace.sdk.core.nox.EW202WManager.WiFiSignalListener;
 import com.sleepace.sdk.core.nox.domain.SLPTimeInfo;
 import com.sleepace.sdk.core.nox.util.Constants;
 import com.sleepace.sdk.interfs.IConnectionStateCallback;
@@ -26,7 +27,6 @@ import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
-import android.icu.util.TimeUnit;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -38,6 +38,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class DeviceFragment extends BaseFragment {
@@ -49,8 +50,9 @@ public class DeviceFragment extends BaseFragment {
 	private String SP_TOKEN = "sp_token";
 	private String SP_SERVER_HOST = "sp_server_host";
 	private String SP_DEVECI_ID = "sp_device_id";
-	Handler handler = new Handler();
+	private Handler handler = new Handler();
 	private WiFiDeviceSdkHelper wifiDeviceSdkHelper;
+	private TextView tvWiFiSignal;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -82,6 +84,7 @@ public class DeviceFragment extends BaseFragment {
 		btnBindDevice = (Button) root.findViewById(R.id.btn_bind_device);
 		btnUnbindDevice = (Button) root.findViewById(R.id.btn_unbind_device);
 		btnSyncTime = (Button) root.findViewById(R.id.btn_sync_time);
+		tvWiFiSignal = (TextView) root.findViewById(R.id.tv_wifi_signal);
 		btnBindDevice.setVisibility(View.VISIBLE);
 		btnUnbindDevice.setVisibility(View.VISIBLE);
 	}
@@ -116,7 +119,7 @@ public class DeviceFragment extends BaseFragment {
 
 		if (TextUtils.isEmpty(deviceId)) {
 //			etDeviceId.setText("7klkgdpedxyfx");
-			etDeviceId.setText("a9p3w87sr4on7");
+			etDeviceId.setText("EW22W20C00848");
 		} else {
 			etDeviceId.setText(deviceId);
 			MainActivity.deviceId = deviceId;
@@ -140,6 +143,7 @@ public class DeviceFragment extends BaseFragment {
 		btnUnbindDevice.setOnClickListener(this);
 		btnBindDevice.setOnClickListener(this);
 		btnSyncTime.setOnClickListener(this);
+		getDeviceHelper().registWiFiSignalListener(wiFiSignalListener);
 	}
 
 	protected void initUI() {
@@ -155,6 +159,30 @@ public class DeviceFragment extends BaseFragment {
 
 		SdkLog.log(TAG + "设备连接状态:" + isConnected);
 		initPageState(isConnected);
+		
+		if(!TextUtils.isEmpty(MainActivity.deviceId)) {
+			getDeviceHelper().getWiFiSignalInfo(DeviceType.DEVICE_TYPE_EW202W.getType(), MainActivity.deviceId, new IResultCallback<Byte>() {
+				@Override
+				public void onResultCallback(final CallbackData<Byte> cd) {
+					// TODO Auto-generated method stub
+					if(isAdded()) {
+						mActivity.runOnUiThread(new Runnable() {
+							@Override
+							public void run() {
+								// TODO Auto-generated method stub
+								if(cd.isSuccess()) {
+									initWiFiSignal(cd.getResult());
+								}
+							}
+						});
+					}
+				}
+			});
+		}
+	}
+	
+	private void initWiFiSignal(byte signal) {
+		tvWiFiSignal.setText(String.valueOf(signal));
 	}
 
 	private void initPageState(boolean isConnected) {
@@ -183,6 +211,24 @@ public class DeviceFragment extends BaseFragment {
 		btnBindDevice.setEnabled(enable);
 		btnUnbindDevice.setEnabled(enable);
 	}
+	
+	private WiFiSignalListener wiFiSignalListener = new WiFiSignalListener() {
+		@Override
+		public void onWiFiSignalChanged(final String deviceId, final byte signal) {
+			// TODO Auto-generated method stub
+			if(isAdded()) {
+				mActivity.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						if(deviceId.equals(MainActivity.deviceId)) {
+							initWiFiSignal(signal);
+						}
+					}
+				});
+			}
+		}
+	};
 	
 	private void getFirmwareInfo() {
 		HashMap<String, Object> args = new HashMap<String, Object>();
@@ -282,6 +328,7 @@ public class DeviceFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		super.onDestroyView();
 		getDeviceHelper().removeConnectionStateCallback(stateCallback);
+		getDeviceHelper().unregistWiFiSignalListener(wiFiSignalListener);
 	}
 	
 	private IResultCallback getDeviceListCallback = new IResultCallback<List<DeviceInfo>>() {

@@ -190,5 +190,5 @@
         <item>@string/sat</item>
         <item>@string/sun</item>
     </string-array>
-
+<string name="wifi_signal">WiFi signal strength</string>
 </resources>

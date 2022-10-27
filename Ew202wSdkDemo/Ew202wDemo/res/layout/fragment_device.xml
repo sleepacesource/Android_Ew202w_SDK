@@ -66,10 +66,8 @@
         android:layout_marginTop="12dp"
         android:text="@string/connect_server"
         android:textSize="@dimen/Title_2" />
-    
-    
-       <Button
-        android:visibility="gone"
+
+    <Button
         android:id="@+id/btn_bind_device"
         style="@style/common_bt"
         android:layout_height="@dimen/btn_height"
@@ -77,10 +75,10 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="12dp"
         android:text="@string/bind"
-        android:textSize="@dimen/Title_2" />
-       
-       <Button
-        android:visibility="gone"
+        android:textSize="@dimen/Title_2"
+        android:visibility="gone" />
+
+    <Button
         android:id="@+id/btn_unbind_device"
         style="@style/common_bt"
         android:layout_height="@dimen/btn_height"
@@ -88,7 +86,8 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="12dp"
         android:text="@string/unbind"
-        android:textSize="@dimen/Title_2" />
+        android:textSize="@dimen/Title_2"
+        android:visibility="gone" />
 
     <EditText
         android:id="@+id/et_deviceId"
@@ -123,7 +122,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/fireware_update"
         android:textSize="@dimen/Title_2" />
-    
+
     <Button
         android:id="@+id/btn_sync_time"
         style="@style/common_bt"
@@ -132,7 +131,33 @@
         android:layout_marginRight="0dp"
         android:layout_marginTop="10dp"
         android:text="@string/sync_time"
-        android:textSize="@dimen/Title_2" 
-        />
+        android:textSize="@dimen/Title_2"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginTop="0dp"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/wifi_signal"
+            android:textColor="@color/COLOR_4"
+            android:textSize="@dimen/Title_3" />
+
+        <TextView
+            android:id="@+id/tv_wifi_signal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/COLOR_3"
+            android:textSize="@dimen/Title_3" />
+    </LinearLayout>
 
 </LinearLayout>
