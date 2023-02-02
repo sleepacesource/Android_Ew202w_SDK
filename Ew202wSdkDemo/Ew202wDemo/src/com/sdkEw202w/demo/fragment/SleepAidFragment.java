@@ -90,6 +90,7 @@ public class SleepAidFragment extends BaseFragment {
 
 	private void initUi() {
 		// TODO Auto-generated method stub
+		initDefaultAidInfo();
 		SdkLog.log(TAG, "---getDeviceHelper().isConnected()--：" + getDeviceHelper().isConnected()+"---MainActivity.deviceId---:"+MainActivity.deviceId);
 		if (getDeviceHelper().isConnected()) {
 			// 助眠获取
@@ -171,7 +172,7 @@ public class SleepAidFragment extends BaseFragment {
 
 		valueDialog = new SelectValueDialog(mActivity, data);
 		valueDialog.setValueSelectedListener(valueSelectedListener);
-		music.setMusicID(DemoApp.SLEEPAID_MUSIC[10][10]);
+		music.setMusicID(DemoApp.SLEEPAID_MUSIC[10][0]);
 		music.setMusicName(getString(Utils.getSleepAidMusicName(music.getMusicID())));
 		initMusicView();
 
@@ -305,6 +306,7 @@ public class SleepAidFragment extends BaseFragment {
 		public void onValueSelected(SelectValueDialog dialog, byte value) {
 			// TODO Auto-generated method stub
 			LogUtil.log(TAG + " onValueSelected val:" + value);
+			aidInfo.setSmartFlag((byte)0);
 			aidInfo.setAidStopDuration(value);
 			initSleepAidDurationView();
 		}
