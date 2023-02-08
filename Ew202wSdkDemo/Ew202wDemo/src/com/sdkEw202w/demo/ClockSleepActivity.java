@@ -136,7 +136,7 @@ public class ClockSleepActivity extends BaseActivity {
 						// TODO Auto-generated method stub
 						if (cd.isSuccess()) {
 							clockDormancyBean = cd.getResult();
-							SdkLog.log(TAG, "----clockDormancyBean---:" + clockDormancyBean);
+							SdkLog.log(TAG, "----clockDormancyGet suc---:" + clockDormancyBean);
 							if (clockDormancyBean != null) {
 								initUI(clockDormancyBean);
 							} else {
@@ -149,6 +149,7 @@ public class ClockSleepActivity extends BaseActivity {
 								initUI(clockDormancyBean);
 							}
 						} else {
+							SdkLog.log(TAG, "----clockDormancyGet fail---:" + clockDormancyBean);
 							clockDormancyBean = new ClockDormancyBean();
 							clockDormancyBean.setStartHour(22);
 							clockDormancyBean.setStartMin(0);
@@ -185,6 +186,7 @@ public class ClockSleepActivity extends BaseActivity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				showLoading();
+				SdkLog.log("save clockDormancyBean:" + clockDormancyBean);
 
 				mHelper.clockDormancySet(MainActivity.deviceId, clockDormancyBean, new IResultCallback() {
 					@Override
@@ -329,6 +331,7 @@ public class ClockSleepActivity extends BaseActivity {
 		}
 		clockDormancyBean.setEndHour(eHour);
 		clockDormancyBean.setEndMin(eMinute);
+		SdkLog.log("setEndTimeText----" + clockDormancyBean);
 	}
 
 	private void setWheelViewText(int hour, int minute) {
